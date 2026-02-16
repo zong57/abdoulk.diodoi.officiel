@@ -4,84 +4,56 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdoulk Diodoi | OFFICIEL 🚀</title>
-    <link rel="manifest" href="/manifest.json">
     <style>
-        body{ font-family: Arial, sans-serif; line-height: 1.6; margin:0; background:#f4f4f4; user-select:none; }
-        .container{ width:85%; margin:auto; overflow:hidden; }
-        header{ background:#35424a; color:#fff; padding-top:30px; min-height:70px; border-bottom:#e8491d 3px solid; position:sticky; top:0; z-index:100; }
-        header a{ color:#fff; text-decoration:none; text-transform:uppercase; font-size:14px; padding:0 15px; }
-        .highlight{ color:#e8491d; font-weight:bold; }
-        #showcase{ min-height:350px; background:#35424a; text-align:center; color:#fff; padding-top:80px; }
-        #showcase h1{ font-size:45px; animation: shake 0.5s infinite; }
-        .btn-viral{ height:50px; background:#e8491d; border:0; padding:0 30px; color:#fff; cursor:pointer; border-radius:5px; font-weight:bold; font-size:18px; margin:10px; }
-        #boxes{ margin-top:20px; display:flex; flex-wrap:wrap; justify-content:center; }
-        .box{ background:#fff; padding:20px; width:280px; margin:10px; text-align:center; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); color:#333; }
-        footer{ padding:20px; margin-top:20px; color:#fff; background:#e8491d; text-align:center; }
-        @keyframes shake { 0%{transform:translate(1px,1px)} 50%{transform:translate(-1px,-2px)} 100%{transform:translate(1px,-1px)} }
-        #install-btn{ background:#22c55e; display:none; }
+        body{ font-family: Arial, sans-serif; margin:0; background:#f4f4f4; text-align:center; }
+        header{ background:#35424a; color:#fff; padding:20px; border-bottom:#e8491d 3px solid; }
+        .container{ width:85%; margin:auto; }
+        #showcase{ background:#35424a; color:#fff; padding:60px 20px; }
+        .btn{ background:#e8491d; color:#fff; border:0; padding:15px 30px; cursor:pointer; font-weight:bold; border-radius:5px; margin:10px; }
+        .section{ padding:40px; display:none; background:white; margin:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+        .active{ display:block; }
+        footer{ background:#e8491d; color:#fff; padding:20px; margin-top:20px; }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div id="branding"><h1><span class="highlight">Abdoulk</span> Diodoi</h1></div>
-            <nav>
-                <!-- Liens simplifiés pour vercel.json -->
-                <a href="/">Accueil</a>
-                <a href="/contact">Contact</a>
-                <a href="/confidentialite">Privé</a>
-            </nav>
-        </div>
+        <h1><span style="color:#e8491d">Abdoulk</span> Diodoi</h1>
+        <nav>
+            <button onclick="show('home')" style="background:none; border:none; color:white; cursor:pointer;">Accueil</button> | 
+            <button onclick="show('contact')" style="background:none; border:none; color:white; cursor:pointer;">Contact</button> | 
+            <button onclick="show('prive')" style="background:none; border:none; color:white; cursor:pointer;">Privé</button>
+        </nav>
     </header>
 
-    <section id="showcase">
-        <div class="container">
-            <h1>CONTENU EXPLOSIF 💥</h1>
-            <p>Le réseau officiel d'Abdoulk Diodoi est arrivé !</p>
-            <button id="install-btn" class="btn-viral">📲 INSTALLER L'APP</button><br>
-            <button class="btn-viral" onclick="shareMe()">PARTAGER L'EXPÉRIENCE 🚀</button>
-        </div>
-    </section>
+    <div id="home" class="section active">
+        <h2>CONTENU EXPLOSIF 💥</h2>
+        <p>Bienvenue sur le site officiel d'Abdoulk Diodoi.</p>
+        <button class="btn" onclick="share()">PARTAGER LE SITE 🚀</button>
+    </div>
 
-    <section id="boxes" class="container">
-        <div class="box"><h3>⚡ RAPIDE</h3><p>Vitesse atomique sur mobile.</p></div>
-        <div class="box"><h3>🔐 SÉCURISÉ</h3><p>Contenu protégé et SSL actif.</p></div>
-        <div class="box"><h3>💰 REVENUS</h3><p>Prêt pour Google AdSense.</p></div>
-    </section>
+    <div id="contact" class="section">
+        <h2>CONTACT</h2>
+        <p>Email : contact.abdoulk.diodoi@gmail.com</p>
+        <button class="btn" onclick="show('home')">Retour</button>
+    </div>
 
-    <footer><p>Abdoulk Diodoi &copy; 2026 | contact.abdoulk.diodoi@gmail.com</p></footer>
+    <div id="prive" class="section">
+        <h2>CONFIDENTIALITÉ</h2>
+        <p>Ce site est sécurisé et utilise Google AdSense.</p>
+        <button class="btn" onclick="show('home')">Retour</button>
+    </div>
+
+    <footer><p>Abdoulk Diodoi &copy; 2024</p></footer>
 
     <script>
-        // SYSTÈME DE PARTAGE ROBUSTE
-        async function shareMe() {
-            const shareData = {
-                title: 'Abdoulk Diodoi Officiel',
-                text: 'Découvre ce contenu explosif ! 💥',
-                url: window.location.origin
-            };
-            try {
-                if (navigator.share) {
-                    await navigator.share(shareData);
-                } else {
-                    // Si le partage natif échoue, on copie le lien
-                    const el = document.createElement('textarea');
-                    el.value = window.location.origin;
-                    document.body.appendChild(el);
-                    el.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(el);
-                    alert("Lien copié dans le presse-papier ! 🚀");
-                }
-            } catch (err) {
-                console.log('Erreur:', err);
-            }
+        function show(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
         }
-
-        // SERVICE WORKER & PWA
-        if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js'); }
-        let defP; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); defP = e; document.getElementById('install-btn').style.display = 'inline-block'; });
-        document.getElementById('install-btn').onclick = () => { if(defP) defP.prompt(); };
-        document.addEventListener('contextmenu', e => e.preventDefault());
+        function share() {
+            if(navigator.share) { navigator.share({title:'Abdoulk Diodoi', url:window.location.href}); }
+            else { alert("Lien copié !"); }
+        }
     </script>
 </body>
 </html>
