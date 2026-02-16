@@ -3,23 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdoulk Diodoi | Bienvenue 🚀</title>
-    <link rel="manifest" href="manifest.json">
+    <title>Abdoulk Diodoi | OFFICIEL 🚀</title>
+    <link rel="manifest" href="/manifest.json">
     <style>
-        /* Style inspiré de Brad Traversy avec une touche explosive */
-        body{ font-family: Arial, sans-serif; line-height: 1.5; padding:0; margin:0; background-color:#f4f4f4; user-select: none; }
-        .container{ width:80%; margin:auto; overflow:hidden; }
-        header{ background:#35424a; color:#ffffff; padding-top:30px; min-height:70px; border-bottom:#e8491d 3px solid; }
-        header a{ color:#ffffff; text-decoration:none; text-transform: uppercase; font-size:16px; padding: 0 15px; }
-        header .highlight, header .current a{ color:#e8491d; font-weight:bold; }
-        #showcase{ min-height:400px; background:#35424a; text-align:center; color:#ffffff; padding-top:100px; }
-        #showcase h1{ font-size:55px; margin-bottom:10px; animation: shake 0.5s infinite; }
-        .button_1{ height:38px; background:#e8491d; border:0; padding:0 20px; color:#ffffff; cursor:pointer; border-radius:5px; font-weight:bold; }
-        #boxes{ margin-top:20px; display: flex; justify-content: space-around; }
-        .box{ text-align:center; width:30%; padding:10px; background: white; border-radius: 10px; margin: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        footer{ padding:20px; margin-top:20px; color:#ffffff; background-color:#e8491d; text-align: center; }
-        @keyframes shake { 0% {transform:translate(1px,1px)} 50% {transform:translate(-1px,-2px)} 100% {transform:translate(1px,-1px)} }
-        #install-btn{ background: #22c55e; display: none; margin-bottom: 20px; }
+        body{ font-family: Arial, sans-serif; line-height: 1.6; margin:0; background:#f4f4f4; user-select:none; }
+        .container{ width:85%; margin:auto; overflow:hidden; }
+        header{ background:#35424a; color:#fff; padding-top:30px; min-height:70px; border-bottom:#e8491d 3px solid; position:sticky; top:0; z-index:100; }
+        header a{ color:#fff; text-decoration:none; text-transform:uppercase; font-size:14px; padding:0 10px; }
+        .highlight{ color:#e8491d; font-weight:bold; }
+        #showcase{ min-height:350px; background:#35424a; text-align:center; color:#fff; padding-top:80px; }
+        #showcase h1{ font-size:45px; animation: shake 0.5s infinite; }
+        .btn-viral{ height:45px; background:#e8491d; border:0; padding:0 30px; color:#fff; cursor:pointer; border-radius:5px; font-weight:bold; font-size:18px; }
+        #boxes{ margin-top:20px; display:flex; flex-wrap:wrap; justify-content:center; }
+        .box{ background:#fff; padding:20px; width:280px; margin:10px; text-align:center; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); color:#333; }
+        footer{ padding:20px; margin-top:20px; color:#fff; background:#e8491d; text-align:center; }
+        @keyframes shake { 0%{transform:translate(1px,1px)} 50%{transform:translate(-1px,-2px)} 100%{transform:translate(1px,-1px)} }
+        #install-btn{ background:#22c55e; display:none; margin-bottom:15px; }
     </style>
 </head>
 <body>
@@ -27,42 +26,33 @@
         <div class="container">
             <div id="branding"><h1><span class="highlight">Abdoulk</span> Diodoi</h1></div>
             <nav>
-                <ul>
-                    <li style="display:inline"><a href="index.html">Accueil</a></li>
-                    <li style="display:inline"><a href="contact.html">Contact</a></li>
-                    <li style="display:inline"><a href="confidentialite.html">Privé</a></li>
-                </ul>
+                <!-- Liens simplifiés pour éviter les erreurs 404 -->
+                <a href="/">Accueil</a>
+                <a href="/contact">Contact</a>
+                <a href="/confidentialite">Privé</a>
             </nav>
         </div>
     </header>
-
     <section id="showcase">
         <div class="container">
-            <h1>Contenu Explosif 💥</h1>
-            <p>Le site officiel d'Abdoulk Diodoi. Sécurisé, rapide et immortel.</p>
-            <button id="install-btn" class="button_1">📲 INSTALLER L'APP</button>
-            <br>
-            <button class="button_1" onclick="shareMe()">PARTAGER LE SITE 🚀</button>
+            <h1>CONTENU EXPLOSIF 💥</h1>
+            <p>Bienvenue sur l'espace officiel d'Abdoulk Diodoi.</p>
+            <button id="install-btn" class="btn-viral">📲 INSTALLER L'APP</button><br><br>
+            <button class="btn-viral" onclick="shareMe()">PARTAGER L'EXPÉRIENCE 🚀</button>
         </div>
     </section>
-
     <section id="boxes" class="container">
-        <div class="box"><h3>🚀 Viral</h3><p>Partage instantané sur tous les réseaux.</p></div>
-        <div class="box"><h3>🔐 Sécurisé</h3><p>Vos données sont protégées ici.</p></div>
-        <div class="box"><h3>💰 Revenus</h3><p>Optimisé pour Google AdSense.</p></div>
+        <div class="box"><h3>⚡ RAPIDE</h3><p>Optimisé pour mobile.</p></div>
+        <div class="box"><h3>🔐 SÉCURISÉ</h3><p>Données protégées.</p></div>
+        <div class="box"><h3>💰 REVENUS</h3><p>Prêt pour AdSense.</p></div>
     </section>
-
-    <footer>
-        <p>Abdoulk Diodoi &copy; 2024 | contact.abdoulk.diodoi@gmail.com</p>
-    </footer>
-
+    <footer><p>Abdoulk Diodoi &copy; 2026 | contact.abdoulk.diodoi@gmail.com</p></footer>
     <script>
-        function shareMe() { navigator.share({ title: 'Abdoulk Diodoi', url: window.location.href }); }
-        if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/service-worker.js'); }
+        function shareMe(){ navigator.share({title:'Abdoulk Diodoi', url:window.location.href}); }
+        if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js'); }
         let defP; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); defP = e; document.getElementById('install-btn').style.display = 'inline-block'; });
         document.getElementById('install-btn').onclick = () => { if(defP) defP.prompt(); };
         document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
-
