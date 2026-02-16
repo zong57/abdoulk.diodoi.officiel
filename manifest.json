@@ -1,0 +1,10 @@
+{
+  "name": "Abdoulk Diodoi App",
+  "short_name": "Abdoulk",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#35424a",
+  "theme_color": "#e8491d",
+  "icons": [{ "src": "https://cdn-icons-png.flaticon.com", "sizes": "512x512", "type": "image/png" }]
+}
+
