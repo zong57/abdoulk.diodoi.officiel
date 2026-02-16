@@ -3,57 +3,88 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdoulk Diodoi | OFFICIEL 🚀</title>
+    <title>A | OFFICIEL 🚀</title>
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        body{ font-family: Arial, sans-serif; margin:0; background:#f4f4f4; text-align:center; }
-        header{ background:#35424a; color:#fff; padding:20px; border-bottom:#e8491d 3px solid; }
-        .container{ width:85%; margin:auto; }
-        #showcase{ background:#35424a; color:#fff; padding:60px 20px; }
-        .btn{ background:#e8491d; color:#fff; border:0; padding:15px 30px; cursor:pointer; font-weight:bold; border-radius:5px; margin:10px; }
-        .section{ padding:40px; display:none; background:white; margin:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-        .active{ display:block; }
-        footer{ background:#e8491d; color:#fff; padding:20px; margin-top:20px; }
+        body{ font-family: Arial, sans-serif; line-height: 1.6; margin:0; background:#050505; color:#fff; user-select:none; }
+        .container{ width:85%; margin:auto; overflow:hidden; }
+        header{ background:#000; padding:20px 0; border-bottom:#e8491d 3px solid; text-align:center; position:sticky; top:0; z-index:100; }
+        
+        /* LE A MAGNIFIQUE */
+        .super-a {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 100px;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #ff4500, #e8491d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(232, 73, 29, 0.7);
+            margin: 10px 0;
+            display: inline-block;
+            animation: glow-pulse 2s infinite;
+        }
+
+        @keyframes glow-pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px #e8491d); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 25px #ff4500); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 5px #e8491d); }
+        }
+
+        nav { margin-top: 15px; }
+        nav a { color:#fff; text-decoration:none; text-transform:uppercase; font-size:14px; padding:0 15px; font-weight:bold; }
+        nav a:hover { color:#e8491d; }
+
+        #showcase{ padding:60px 20px; text-align:center; background: radial-gradient(circle, #1a1a1a 0%, #050505 100%); }
+        .btn-viral{ height:50px; background:#e8491d; border:0; padding:0 30px; color:#fff; cursor:pointer; border-radius:50px; font-weight:bold; font-size:18px; margin:10px; box-shadow: 0 5px 15px rgba(232, 73, 29, 0.4); }
+        
+        #boxes{ display:flex; flex-wrap:wrap; justify-content:center; padding:20px; }
+        .box{ background:#111; padding:20px; width:280px; margin:10px; text-align:center; border-radius:15px; border: 1px solid #222; }
+        footer{ padding:20px; background:#000; text-align:center; font-size:12px; color:#444; border-top: 1px solid #222; }
+        #install-btn{ background:#22c55e; display:none; }
     </style>
 </head>
 <body>
     <header>
-        <h1><span style="color:#e8491d">Abdoulk</span> Diodoi</h1>
-        <nav>
-            <button onclick="show('home')" style="background:none; border:none; color:white; cursor:pointer;">Accueil</button> | 
-            <button onclick="show('contact')" style="background:none; border:none; color:white; cursor:pointer;">Contact</button> | 
-            <button onclick="show('prive')" style="background:none; border:none; color:white; cursor:pointer;">Privé</button>
-        </nav>
+        <div class="container">
+            <div class="super-a">A</div>
+            <nav>
+                <a href="/">Accueil</a>
+                <a href="/contact">Contact</a>
+                <a href="/confidentialite">Privé</a>
+            </nav>
+        </div>
     </header>
 
-    <div id="home" class="section active">
-        <h2>CONTENU EXPLOSIF 💥</h2>
-        <p>Bienvenue sur le site officiel d'Abdoulk Diodoi.</p>
-        <button class="btn" onclick="share()">PARTAGER LE SITE 🚀</button>
-    </div>
+    <section id="showcase">
+        <div class="container">
+            <h2 style="color:#e8491d">EXPÉRIENCE UNIQUE 💥</h2>
+            <button id="install-btn" class="btn-viral">📲 INSTALLER L'APP</button><br>
+            <button class="btn-viral" onclick="shareMe()">PARTAGER L'APP 🚀</button>
+        </div>
+    </section>
 
-    <div id="contact" class="section">
-        <h2>CONTACT</h2>
-        <p>Email : contact.abdoulk.diodoi@gmail.com</p>
-        <button class="btn" onclick="show('home')">Retour</button>
-    </div>
+    <section id="boxes" class="container">
+        <div class="box"><h3 style="color:#e8491d">⚡ VITESSE</h3><p>Accès instantané.</p></div>
+        <div class="box"><h3 style="color:#e8491d">🔐 PRIVÉ</h3><p>Sécurité totale.</p></div>
+    </section>
 
-    <div id="prive" class="section">
-        <h2>CONFIDENTIALITÉ</h2>
-        <p>Ce site est sécurisé et utilise Google AdSense.</p>
-        <button class="btn" onclick="show('home')">Retour</button>
-    </div>
-
-    <footer><p>Abdoulk Diodoi &copy; 2024</p></footer>
+    <footer><p>&copy; 2024 - Plateforme A | contact.abdoulk.diodoi@gmail.com</p></footer>
 
     <script>
-        function show(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+        async function shareMe() {
+            try {
+                await navigator.share({ title: 'Application A', url: window.location.href });
+            } catch (err) {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Lien copié ! 🚀");
+            }
         }
-        function share() {
-            if(navigator.share) { navigator.share({title:'Abdoulk Diodoi', url:window.location.href}); }
-            else { alert("Lien copié !"); }
-        }
+        if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js'); }
+        let defP; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); defP = e; document.getElementById('install-btn').style.display = 'inline-block'; });
+        document.getElementById('install-btn').onclick = () => { if(defP) defP.prompt(); };
+        document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
+
