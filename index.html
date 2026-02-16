@@ -3,88 +3,160 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A | OFFICIEL 🚀</title>
+    <title>A | PLATINUM HUB 💎</title>
     <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        body{ font-family: Arial, sans-serif; line-height: 1.6; margin:0; background:#050505; color:#fff; user-select:none; }
-        .container{ width:85%; margin:auto; overflow:hidden; }
-        header{ background:#000; padding:20px 0; border-bottom:#e8491d 3px solid; text-align:center; position:sticky; top:0; z-index:100; }
+        :root { --primary: #00ff88; --secondary: #ff4500; --dark: #000; }
+        body{ font-family: 'Inter', sans-serif; margin:0; background: var(--dark); color:white; text-align:center; user-select:none; overflow-x: hidden; }
         
-        /* LE A MAGNIFIQUE */
-        .super-a {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 100px;
-            font-weight: 900;
-            background: linear-gradient(to bottom, #ff4500, #e8491d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(232, 73, 29, 0.7);
-            margin: 10px 0;
-            display: inline-block;
-            animation: glow-pulse 2s infinite;
-        }
+        /* HEADER LUXE */
+        header{ background:rgba(0,0,0,0.9); padding:15px 0; border-bottom: 2px solid var(--primary); position: sticky; top:0; z-index:1000; backdrop-filter: blur(15px); }
+        .circle-logo { width: 80px; height: 80px; background: #000; border: 3px solid #fff; border-radius: 50%; margin: 0 auto; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 25px var(--primary); cursor:pointer; }
+        .super-a { font-family: 'Orbitron', sans-serif; font-size: 50px; font-weight: 900; background: linear-gradient(to bottom, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        @keyframes glow-pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 5px #e8491d); }
-            50% { transform: scale(1.1); filter: drop-shadow(0 0 25px #ff4500); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 5px #e8491d); }
-        }
+        /* HERO VIDEO HD */
+        .hero { width: 100%; height: 280px; position: relative; overflow: hidden; border-bottom: 1px solid #222; }
+        .hero video { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+        .overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); display:flex; flex-direction:column; justify-content:center; }
 
-        nav { margin-top: 15px; }
-        nav a { color:#fff; text-decoration:none; text-transform:uppercase; font-size:14px; padding:0 15px; font-weight:bold; }
-        nav a:hover { color:#e8491d; }
-
-        #showcase{ padding:60px 20px; text-align:center; background: radial-gradient(circle, #1a1a1a 0%, #050505 100%); }
-        .btn-viral{ height:50px; background:#e8491d; border:0; padding:0 30px; color:#fff; cursor:pointer; border-radius:50px; font-weight:bold; font-size:18px; margin:10px; box-shadow: 0 5px 15px rgba(232, 73, 29, 0.4); }
+        /* HUB GRILLE RÉSEAUX */
+        .hub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; max-width: 500px; margin: 0 auto; }
+        .hub-item { text-decoration: none; color: #888; font-size: 10px; font-weight: bold; }
+        .icon { width: 55px; height: 55px; border-radius: 15px; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.7); border: 1px solid #333; }
         
-        #boxes{ display:flex; flex-wrap:wrap; justify-content:center; padding:20px; }
-        .box{ background:#111; padding:20px; width:280px; margin:10px; text-align:center; border-radius:15px; border: 1px solid #222; }
-        footer{ padding:20px; background:#000; text-align:center; font-size:12px; color:#444; border-top: 1px solid #222; }
-        #install-btn{ background:#22c55e; display:none; }
+        /* COULEURS ICONES */
+        .yt { background: #f00; } .tk { background: #000; border: 1px solid #fff; }
+        .fb { background: #1877f2; } .wa { background: #25d366; }
+        .tg { background: #0088cc; } .gg { background: #fff; color:#000; }
+
+        /* MUSIQUE ZEN PLAYER */
+        .music-player { position: fixed; bottom: 20px; right: 20px; background: rgba(0,255,136,0.1); border: 1px solid var(--primary); padding: 10px; border-radius: 50px; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 10px; z-index: 2000; }
+        .music-btn { background: var(--primary); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 20px; }
+        .timer-display { font-size: 10px; color: var(--secondary); font-weight: bold; display:none; }
+
+        /* PAGES */
+        .page { display:none; padding:30px 15px; animation: fadeIn 0.4s; text-align: left; max-width: 600px; margin: auto; }
+        .active { display:block; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        .btn-premium { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #000; border:0; padding:18px 40px; border-radius:50px; font-weight:900; cursor:pointer; margin:20px; font-size: 1rem; box-shadow: 0 10px 20px rgba(0,255,136,0.3); display: block; margin: 20px auto; width: fit-content; }
+        
+        /* STYLE TEXTE LEGAL */
+        .legal-text { font-size: 0.9rem; line-height: 1.6; color: #ccc; background: #111; padding: 20px; border-radius: 15px; }
+        .legal-text h3 { color: var(--primary); }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="container">
-            <div class="super-a">A</div>
-            <nav>
-                <a href="/">Accueil</a>
-                <a href="/contact">Contact</a>
-                <a href="/confidentialite">Privé</a>
-            </nav>
-        </div>
+        <div class="circle-logo" onclick="show('home')"><div class="super-a">A</div></div>
+        <nav style="margin-top:10px; text-align: center;">
+            <button onclick="show('home')" style="background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;margin:0 10px;">EXPLORER</button>
+            <button onclick="show('prive')" style="background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;margin:0 10px;">LÉGAL & PUB</button>
+            <button onclick="show('contact')" style="background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;margin:0 10px;">SUPPORT</button>
+        </nav>
     </header>
 
-    <section id="showcase">
-        <div class="container">
-            <h2 style="color:#e8491d">EXPÉRIENCE UNIQUE 💥</h2>
-            <button id="install-btn" class="btn-viral">📲 INSTALLER L'APP</button><br>
-            <button class="btn-viral" onclick="shareMe()">PARTAGER L'APP 🚀</button>
+    <!-- ACCUEIL EXPLORER -->
+    <div id="home" class="page active" style="text-align: center;">
+        <div class="hero">
+            <video autoplay muted loop playsinline><source src="https://assets.mixkit.co" type="video/mp4"></video>
+            <div class="overlay">
+                <h1 style="color:var(--primary); margin:0; font-size: 1.5rem;">A - STREAMING TOTAL</h1>
+                <p style="font-size: 0.8rem;">Vidéos • Musique Zen • Hub Social</p>
+            </div>
         </div>
-    </section>
 
-    <section id="boxes" class="container">
-        <div class="box"><h3 style="color:#e8491d">⚡ VITESSE</h3><p>Accès instantané.</p></div>
-        <div class="box"><h3 style="color:#e8491d">🔐 PRIVÉ</h3><p>Sécurité totale.</p></div>
-    </section>
+        <div class="hub-grid">
+            <a href="https://www.youtube.com" class="hub-item"><div class="icon yt">📺</div>YouTube</a>
+            <a href="https://www.tiktok.com" class="hub-item"><div class="icon tk">🎵</div>TikTok</a>
+            <a href="https://www.facebook.com" class="hub-item"><div class="icon fb">👥</div>Facebook</a>
+            <a href="https://www.whatsapp.com" class="hub-item"><div class="icon wa">💬</div>WhatsApp</a>
+            <a href="https://t.me" class="hub-item"><div class="icon tg">✈️</div>Telegram</a>
+            <a href="https://www.google.com" class="hub-item"><div class="icon gg">🔍</div>Google</a>
+        </div>
 
-    <footer><p>&copy; 2024 - Plateforme A | contact.abdoulk.diodoi@gmail.com</p></footer>
+        <!-- ESPACE PUB ADSENSE (OBLIGATOIRE POUR GAGNER DE L'ARGENT) -->
+        <div style="margin: 20px; padding: 10px; border: 1px dashed var(--primary); background: #111;">
+            <p style="font-size: 10px; color: #444;">ESPACE PUBLICITAIRE VALIDE</p>
+            <p style="color:var(--primary); font-size: 12px;">Google AdSense en attente de validation...</p>
+        </div>
+
+        <button class="btn-premium" onclick="shareMe()">PARTAGER L'APP PLATINUM 🚀</button>
+    </div>
+
+    <!-- PAGE CONFIDENTIALITÉ (POUR VALIDER ADSENSE) -->
+    <div id="prive" class="page">
+        <div class="legal-text">
+            <h2>Politique de Confidentialité Pro</h2>
+            <p>Dernière mise à jour : Février 2024</p>
+            <h3>1. Introduction</h3>
+            <p>L'application <strong>A</strong> respecte votre vie privée. Nous ne collectons aucune donnée personnelle identifiable sans votre consentement.</p>
+            <h3>2. Google AdSense & Cookies</h3>
+            <p>Nous utilisons <strong>Google AdSense</strong> pour diffuser des annonces. Google utilise des cookies pour diffuser des annonces basées sur vos visites précédentes.</p>
+            <h3>3. Sécurité</h3>
+            <p>Toutes vos connexions sont sécurisées via le protocole HTTPS de Vercel.</p>
+            <p>Propriétaire : <strong>Abdoulk Diodoi Officiel</strong></p>
+        </div>
+        <button class="btn-premium" onclick="show('home')">RETOUR</button>
+    </div>
+
+    <!-- PAGE SUPPORT -->
+    <div id="contact" class="page" style="text-align: center;">
+        <h2 style="color:var(--primary)">SUPPORT TECHNIQUE</h2>
+        <p>Une question ? Contactez Abdoulk Diodoi :</p>
+        <p><strong>contact.abdoulk.diodoi@gmail.com</strong></p>
+        <button class="btn-premium" onclick="show('home')">RETOUR</button>
+    </div>
+
+    <!-- PLAYER MUSIQUE ZEN -->
+    <div class="music-player">
+        <button class="music-btn" onclick="toggleMusic()" id="mu-btn">🎵</button>
+        <div onclick="setSleepTimer()" style="cursor:pointer; text-align:left;">
+            <span style="font-size:10px; color:var(--primary); display:block; font-weight:bold;">MODE ZEN (30m)</span>
+            <span id="timer-count" class="timer-display">30:00</span>
+        </div>
+        <audio id="bg-audio" loop><source src="https://www.chosic.com" type="audio/mp3"></audio>
+    </div>
 
     <script>
-        async function shareMe() {
-            try {
-                await navigator.share({ title: 'Application A', url: window.location.href });
-            } catch (err) {
-                navigator.clipboard.writeText(window.location.href);
-                alert("Lien copié ! 🚀");
-            }
+        function show(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
         }
+
+        async function shareMe() {
+            try { await navigator.share({ title: 'Application A Platinum', text: 'Installe cette application 100MB pour tout voir gratuitement !', url: window.location.href }); }
+            catch (err) { navigator.clipboard.writeText(window.location.href); alert("Lien copié !"); }
+        }
+
+        let st, ci;
+        function toggleMusic() {
+            const a = document.getElementById('bg-audio');
+            const b = document.getElementById('mu-btn');
+            if (a.paused) { a.play(); b.innerText = "⏸️"; b.style.background = "#ff4500"; }
+            else { a.pause(); b.innerText = "🎵"; b.style.background = "#00ff88"; }
+        }
+
+        function setSleepTimer() {
+            const a = document.getElementById('bg-audio');
+            if (a.paused) return alert("Lance la musique d'abord !");
+            clearTimeout(st); clearInterval(ci);
+            let tl = 30 * 60;
+            const td = document.getElementById('timer-count');
+            td.style.display = 'block';
+            ci = setInterval(() => {
+                tl--; let m = Math.floor(tl/60), s = tl%60;
+                td.innerText = `${m}:${s<10?'0':''}${s}`;
+                if (tl <= 0) clearInterval(ci);
+            }, 1000);
+            st = setTimeout(() => { a.pause(); document.getElementById('mu-btn').innerText="🎵"; td.style.display='none'; alert("Dors bien ! 😴"); }, 30*60*1000);
+            alert("Minuteur de sommeil 30 min activé ! 🌙");
+        }
+
         if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js'); }
-        let defP; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); defP = e; document.getElementById('install-btn').style.display = 'inline-block'; });
-        document.getElementById('install-btn').onclick = () => { if(defP) defP.prompt(); };
         document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
-
