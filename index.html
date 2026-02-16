@@ -13,12 +13,12 @@
         .highlight{ color:#e8491d; font-weight:bold; }
         #showcase{ min-height:350px; background:#35424a; text-align:center; color:#fff; padding-top:80px; }
         #showcase h1{ font-size:45px; animation: shake 0.5s infinite; }
-        .btn-viral{ height:45px; background:#e8491d; border:0; padding:0 30px; color:#fff; cursor:pointer; border-radius:5px; font-weight:bold; font-size:18px; }
+        .btn-viral{ height:50px; background:#e8491d; border:0; padding:0 30px; color:#fff; cursor:pointer; border-radius:5px; font-weight:bold; font-size:18px; margin:10px; }
         #boxes{ margin-top:20px; display:flex; flex-wrap:wrap; justify-content:center; }
         .box{ background:#fff; padding:20px; width:280px; margin:10px; text-align:center; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); color:#333; }
         footer{ padding:20px; margin-top:20px; color:#fff; background:#e8491d; text-align:center; }
         @keyframes shake { 0%{transform:translate(1px,1px)} 50%{transform:translate(-1px,-2px)} 100%{transform:translate(1px,-1px)} }
-        #install-btn{ background:#22c55e; display:none; margin-bottom:15px; }
+        #install-btn{ background:#22c55e; display:none; }
     </style>
 </head>
 <body>
@@ -26,29 +26,51 @@
         <div class="container">
             <div id="branding"><h1><span class="highlight">Abdoulk</span> Diodoi</h1></div>
             <nav>
-                <!-- Liens simplifiés pour éviter les erreurs 404 -->
                 <a href="/">Accueil</a>
                 <a href="/contact">Contact</a>
                 <a href="/confidentialite">Privé</a>
             </nav>
         </div>
     </header>
+
     <section id="showcase">
         <div class="container">
             <h1>CONTENU EXPLOSIF 💥</h1>
             <p>Bienvenue sur l'espace officiel d'Abdoulk Diodoi.</p>
-            <button id="install-btn" class="btn-viral">📲 INSTALLER L'APP</button><br><br>
+            <button id="install-btn" class="btn-viral">📲 INSTALLER L'APP</button><br>
             <button class="btn-viral" onclick="shareMe()">PARTAGER L'EXPÉRIENCE 🚀</button>
         </div>
     </section>
+
     <section id="boxes" class="container">
         <div class="box"><h3>⚡ RAPIDE</h3><p>Optimisé pour mobile.</p></div>
         <div class="box"><h3>🔐 SÉCURISÉ</h3><p>Données protégées.</p></div>
         <div class="box"><h3>💰 REVENUS</h3><p>Prêt pour AdSense.</p></div>
     </section>
-    <footer><p>Abdoulk Diodoi &copy; 2026 | contact.abdoulk.diodoi@gmail.com</p></footer>
+
+    <footer><p>Abdoulk Diodoi &copy; 2024 | contact.abdoulk.diodoi@gmail.com</p></footer>
+
     <script>
-        function shareMe(){ navigator.share({title:'Abdoulk Diodoi', url:window.location.href}); }
+        // SYSTÈME DE PARTAGE UNIVERSEL
+        async function shareMe() {
+            const shareData = {
+                title: 'Abdoulk Diodoi Officiel',
+                text: 'Découvre ce contenu explosif ! 💥',
+                url: window.location.href
+            };
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    navigator.clipboard.writeText(window.location.href);
+                    alert("Lien copié ! Partage-le sur tes réseaux. 🚀");
+                }
+            } catch (err) {
+                console.log('Erreur:', err);
+            }
+        }
+
+        // INSTALLATION & SERVICE WORKER
         if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js'); }
         let defP; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); defP = e; document.getElementById('install-btn').style.display = 'inline-block'; });
         document.getElementById('install-btn').onclick = () => { if(defP) defP.prompt(); };
