@@ -6,106 +6,86 @@
     <title>A | PLATINUM HUB 💎</title>
     <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com" rel="stylesheet">
-    <!-- SCRIPT ADSENSE (À remplacer par ton vrai code plus tard) -->
-    <script async src="https://pagead2.googlesyndication.com" crossorigin="anonymous"></script>
     <style>
         :root { --primary: #00ff88; --secondary: #ff4500; --dark: #000; }
         body{ font-family: 'Inter', sans-serif; margin:0; background: var(--dark); color:white; text-align:center; user-select:none; overflow-x: hidden; }
         
-        /* HEADER AVEC LOGO CERCLE */
-        header{ background:rgba(0,0,0,0.9); padding:15px 0; border-bottom: 2px solid var(--primary); position: sticky; top:0; z-index:1000; backdrop-filter: blur(15px); }
-        .circle-logo { width: 80px; height: 80px; background: #000; border: 3px solid #fff; border-radius: 50%; margin: 0 auto; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 25px var(--primary); cursor:pointer; }
-        .super-a { font-family: 'Orbitron', sans-serif; font-size: 50px; font-weight: 900; background: linear-gradient(to bottom, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* NOTIFICATION LIVE ROUGE */
+        #live-notify { display: none; background: linear-gradient(90deg, #ff4500, #ff0000); color: white; padding: 12px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 9999; animation: slideDown 0.5s; }
+        @keyframes slideDown { from {transform: translateY(-100%);} to {transform: translateY(0);} }
+        .blink { height: 10px; width: 10px; background:#fff; border-radius:50%; display:inline-block; margin-right:10px; animation: f 1s infinite; }
+        @keyframes f { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-        /* HERO VIDEO HD 100MB */
-        .hero { width: 100%; height: 280px; position: relative; overflow: hidden; border-bottom: 1px solid #222; }
+        /* HEADER & CLOCHE */
+        header{ background:rgba(0,0,0,0.9); padding:15px 0; border-bottom: 2px solid var(--primary); position: sticky; top:0; z-index:1000; backdrop-filter: blur(15px); transition: 0.3s; }
+        .header-content { display: flex; align-items: center; justify-content: space-around; max-width: 500px; margin: auto; }
+        .circle-logo { width: 70px; height: 70px; background: #000; border: 3px solid #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px var(--primary); }
+        .super-a { font-family: 'Orbitron', sans-serif; font-size: 45px; font-weight: 900; background: linear-gradient(to bottom, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bell { font-size: 24px; cursor: pointer; position: relative; animation: ring 2s infinite; transform-origin: 50% 0; }
+        @keyframes ring { 0%,50%,100%{transform:rotate(0)} 10%,30%{transform:rotate(15deg)} 20%,40%{transform:rotate(-15deg)} }
+        .dot { position: absolute; top:0; right:0; width:10px; height:10px; background:var(--secondary); border-radius:50%; border:1px solid #000; }
+
+        /* HERO & HUB */
+        .hero { width: 100%; height: 250px; position: relative; overflow: hidden; }
         .hero video { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-        .overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); display:flex; flex-direction:column; justify-content:center; }
+        .hub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; max-width: 500px; margin: auto; }
+        .icon { width: 50px; height: 50px; border-radius: 12px; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 5px 15px #000; border: 1px solid #333; }
+        .yt { background: #f00; } .tk { background: #000; border:1px solid #fff; } .fb { background: #1877f2; } .wa { background: #25d366; }
 
-        /* ZONE PUBLICITAIRE (CPC ÉLEVÉ) */
-        .ad-slot { margin: 20px 10px; padding: 15px; border: 1px dashed var(--primary); background: #111; border-radius: 10px; font-size: 12px; color: var(--primary); }
-
-        /* HUB GRILLE */
-        .hub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; max-width: 500px; margin: 0 auto; }
-        .hub-item { text-decoration: none; color: #888; font-size: 10px; font-weight: bold; }
-        .icon { width: 55px; height: 55px; border-radius: 15px; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.7); border: 1px solid #333; }
-        .yt { background: #f00; } .tk { background: #000; border: 1px solid #fff; }
-        .fb { background: #1877f2; } .wa { background: #25d366; }
-        .tg { background: #0088cc; } .gg { background: #fff; color:#000; }
-
-        /* PLAYER ZEN */
+        /* ZEN PLAYER */
         .music-player { position: fixed; bottom: 20px; right: 20px; background: rgba(0,255,136,0.1); border: 1px solid var(--primary); padding: 10px; border-radius: 50px; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 10px; z-index: 2000; }
         .music-btn { background: var(--primary); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 20px; }
-        .timer-display { font-size: 10px; color: var(--secondary); font-weight: bold; display:none; }
 
         /* PAGES */
-        .page { display:none; padding:30px 15px; animation: fadeIn 0.4s; text-align: left; max-width: 600px; margin: auto; }
+        .page { display:none; padding:20px; animation: fadeIn 0.4s; }
         .active { display:block; }
         @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-        .btn-premium { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #000; border:0; padding:18px 40px; border-radius:50px; font-weight:900; cursor:pointer; margin:20px auto; font-size: 1rem; box-shadow: 0 10px 20px rgba(0,255,136,0.3); display: block; width: fit-content; }
+        .btn-p { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #000; border:0; padding:15px 35px; border-radius:50px; font-weight:900; cursor:pointer; margin:20px; box-shadow: 0 10px 20px rgba(0,255,136,0.3); }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="circle-logo" onclick="show('home')"><div class="super-a">A</div></div>
-        <nav style="margin-top:10px; text-align: center;">
-            <button onclick="show('home')" style="background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;margin:0 10px;">EXPLORER</button>
-            <button onclick="show('prive')" style="background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;margin:0 10px;">LÉGAL</button>
-            <button onclick="show('contact')" style="background:none;border:none;color:#fff;cursor:pointer;font-weight:bold;margin:0 10px;">SUPPORT</button>
+    <div id="live-notify"><span class="blink"></span> 🔴 LIVE : Événement en cours ! <button onclick="show('home')" style="border:none; border-radius:5px; padding:2px 10px; cursor:pointer; font-weight:bold;">VOIR</button></div>
+
+    <header id="main-header">
+        <div class="header-content">
+            <div class="circle-logo" onclick="show('home')"><div class="super-a">A</div></div>
+            <div class="bell" onclick="triggerLiveAlert()">🔔<span id="notif-dot" class="dot"></span></div>
+        </div>
+        <nav style="margin-top:10px;">
+            <button onclick="show('home')" style="background:none;border:none;color:#fff;font-weight:bold;margin:0 10px;">EXPLORER</button>
+            <button onclick="show('prive')" style="background:none;border:none;color:#fff;font-weight:bold;margin:0 10px;">LÉGAL</button>
         </nav>
     </header>
 
-    <!-- ACCUEIL -->
-    <div id="home" class="page active" style="text-align: center;">
+    <div id="home" class="page active">
         <div class="hero">
             <video autoplay muted loop playsinline><source src="https://assets.mixkit.co" type="video/mp4"></video>
-            <div class="overlay">
-                <h1 style="color:var(--primary); margin:0;">A - STREAMING GRATUIT</h1>
-                <p style="font-size: 0.8rem;">Vidéos • Musique Zen • Hub Social</p>
+            <div style="position:absolute; top:50%; width:100%; transform:translateY(-50%);">
+                <h1 style="color:var(--primary); margin:0;">A - HUB GRATUIT</h1>
+                <p style="font-size: 10px;">Vidéos • Lives • Musique Zen</p>
             </div>
         </div>
-
-        <div class="ad-slot">
-            <p>💰 SPONSORISÉ : PUBLICITÉ ADSENSE ACTIVE</p>
-            <!-- CODE ANNONCE ICI -->
-        </div>
-
         <div class="hub-grid">
-            <a href="https://www.youtube.com" class="hub-item"><div class="icon yt">📺</div>YouTube</a>
-            <a href="https://www.tiktok.com" class="hub-item"><div class="icon tk">🎵</div>TikTok</a>
-            <a href="https://www.facebook.com" class="hub-item"><div class="icon fb">👥</div>Facebook</a>
-            <a href="https://www.whatsapp.com" class="hub-item"><div class="icon wa">💬</div>WhatsApp</a>
-            <a href="https://t.me" class="hub-item"><div class="icon tg">✈️</div>Telegram</a>
-            <a href="https://www.google.com" class="hub-item"><div class="icon gg">🔍</div>Google</a>
+            <a href="https://www.youtube.com" style="text-decoration:none;color:#888;font-size:10px;"><div class="icon yt">📺</div>YouTube</a>
+            <a href="https://www.tiktok.com" style="text-decoration:none;color:#888;font-size:10px;"><div class="icon tk">🎵</div>TikTok</a>
+            <a href="https://www.facebook.com" style="text-decoration:none;color:#888;font-size:10px;"><div class="icon fb">👥</div>Facebook</a>
+            <a href="https://www.whatsapp.com" style="text-decoration:none;color:#888;font-size:10px;"><div class="icon wa">💬</div>WhatsApp</a>
         </div>
-
-        <button class="btn-premium" onclick="shareMe()">PARTAGER L'APP POUR SOUTENIR 🚀</button>
+        <button class="btn-p" onclick="shareMe()">PARTAGER L'APP 🚀</button>
     </div>
 
-    <!-- PAGE CONFIDENTIALITÉ (OBLIGATOIRE POUR PAIEMENT) -->
-    <div id="prive" class="page">
-        <div style="background:#111; padding:20px; border-radius:15px;">
-            <h2 style="color:var(--primary)">Politique de Confidentialité</h2>
-            <p>L'application <strong>A</strong> utilise <strong>Google AdSense</strong> pour diffuser des annonces. Pour assurer la gratuité de nos vidéos et documentaires, Google collecte des cookies anonymes afin de personnaliser les publicités.</p>
-            <p>Propriétaire : Abdoulk Diodoi Officiel</p>
-        </div>
-        <button class="btn-premium" onclick="show('home')">RETOUR</button>
+    <div id="prive" class="page" style="text-align:left; background:#111; border-radius:15px;">
+        <h3>Confidentialité & AdSense</h3>
+        <p style="font-size:12px; color:#aaa;">L'application <strong>A</strong> respecte votre vie privée. Nous utilisons Google AdSense pour financer la gratuité de nos contenus (Vidéos, Musique Zen). Aucune donnée n'est vendue.</p>
+        <button class="btn-p" onclick="show('home')">RETOUR</button>
     </div>
 
-    <!-- SUPPORT -->
-    <div id="contact" class="page" style="text-align: center;">
-        <h2 style="color:var(--primary)">SUPPORT TECHNIQUE</h2>
-        <p>Email: contact.abdoulk.diodoi@gmail.com</p>
-        <button class="btn-premium" onclick="show('home')">RETOUR</button>
-    </div>
-
-    <!-- LECTEUR ZEN -->
     <div class="music-player">
         <button class="music-btn" onclick="toggleMusic()" id="mu-btn">🎵</button>
         <div onclick="setSleepTimer()" style="cursor:pointer; text-align:left;">
-            <span style="font-size:10px; color:var(--primary); display:block; font-weight:bold;">MODE ZEN (30m)</span>
-            <span id="timer-count" class="timer-display">30:00</span>
+            <span style="font-size:10px; color:var(--primary); font-weight:bold;">ZEN (30m)</span>
+            <span id="timer-count" style="font-size:10px; color:var(--secondary); display:none;">30:00</span>
         </div>
         <audio id="bg-audio" loop><source src="https://www.chosic.com" type="audio/mp3"></audio>
     </div>
@@ -115,35 +95,34 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo(0,0);
+            if(id==='home') { document.getElementById('live-notify').style.display='none'; document.getElementById('main-header').style.marginTop='0'; }
         }
 
         async function shareMe() {
-            try { await navigator.share({ title: 'Application A Platinum', text: 'Installe cette application 100MB pour tout voir gratuitement !', url: window.location.href }); }
+            try { await navigator.share({ title: 'Application A', text: 'Vidéos et Musique gratuite !', url: window.location.href }); }
             catch (err) { navigator.clipboard.writeText(window.location.href); alert("Lien copié !"); }
+        }
+
+        function triggerLiveAlert() {
+            document.getElementById('live-notify').style.display='block';
+            document.getElementById('main-header').style.marginTop='45px';
+            document.getElementById('notif-dot').style.display='none';
         }
 
         let st, ci;
         function toggleMusic() {
-            const a = document.getElementById('bg-audio');
-            const b = document.getElementById('mu-btn');
+            const a = document.getElementById('bg-audio'); const b = document.getElementById('mu-btn');
             if (a.paused) { a.play(); b.innerText = "⏸️"; b.style.background = "#ff4500"; }
             else { a.pause(); b.innerText = "🎵"; b.style.background = "#00ff88"; }
         }
 
         function setSleepTimer() {
-            const a = document.getElementById('bg-audio');
-            if (a.paused) return alert("Lance la musique !");
+            const a = document.getElementById('bg-audio'); if (a.paused) return alert("Lance la musique !");
             clearTimeout(st); clearInterval(ci);
-            let tl = 30 * 60;
-            const td = document.getElementById('timer-count');
-            td.style.display = 'block';
-            ci = setInterval(() => {
-                tl--; let m = Math.floor(tl/60), s = tl%60;
-                td.innerText = `${m}:${s<10?'0':''}${s}`;
-                if (tl <= 0) clearInterval(ci);
-            }, 1000);
-            st = setTimeout(() => { a.pause(); document.getElementById('mu-btn').innerText="🎵"; td.style.display='none'; alert("Dors bien ! 😴"); }, 30*60*1000);
-            alert("Minuteur 30 min activé ! 🌙");
+            let tl = 30 * 60; const td = document.getElementById('timer-count'); td.style.display = 'block';
+            ci = setInterval(() => { tl--; let m=Math.floor(tl/60), s=tl%60; td.innerText=`${m}:${s<10?'0':''}${s}`; if(tl<=0) clearInterval(ci); }, 1000);
+            st = setTimeout(() => { a.pause(); document.getElementById('mu-btn').innerText="🎵"; td.style.display='none'; }, 30*60*1000);
+            alert("Sommeil 30 min activé ! 🌙");
         }
 
         if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js'); }
@@ -151,4 +130,3 @@
     </script>
 </body>
 </html>
-
