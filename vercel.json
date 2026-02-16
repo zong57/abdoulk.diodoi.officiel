@@ -1,4 +1,9 @@
 {
+  "version": 2,
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/confidentialite", "destination": "/confidentialite.html" }
+  ]
 }
